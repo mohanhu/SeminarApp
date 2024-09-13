@@ -56,7 +56,10 @@ class MediaPickerActivity : AppCompatActivity() {
         try {
             exoPlayer.release()
             binding.playerView.player?.release()
+        }
+        catch (e:Exception){
 
+            }
             exoPlayer = ExoPlayer.Builder(this).build()
 
             val mediaItem = MediaItem.Builder().setUri(uri).setMimeType(MimeTypes.VIDEO_MP4).build()
@@ -70,10 +73,6 @@ class MediaPickerActivity : AppCompatActivity() {
                 binding.playerView.player = player
             }
             exoPlayer.addListener(playerListener)
-        }
-        catch (e:Exception){
-
-        }
     }
 
     private val playerListener = object : Player.Listener {
